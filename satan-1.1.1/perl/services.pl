@@ -3,7 +3,7 @@
 #
 # $servers{service}{host}, $clients{service}{host}: Service is, for
 # example, "anonymous FTP". The servers (clients) table holds per service
-# and host, all SATAN records on that topic.
+# and host, all SANTA records on that topic.
 #
 # $server_counts{service}, $client_counts{service}: host counts of the
 # corresponding entries in $servers and $clients.
@@ -17,7 +17,7 @@
 # $service_flag: reset whenever the tables are updated. To recalculate,
 # invoke make_service_info().
 #
-# Standalone usage: perl services.pl [satan_record_files...]
+# Standalone usage: perl services.pl [santa_record_files...]
 # 
 
 $services_files = "rules/services";
@@ -119,11 +119,11 @@ sub clear_service_info {
 #
 # Some scaffolding for stand-alone operation
 #
-if ($running_under_satan) {
+if ($running_under_santa) {
     eval &build_infer_services($services_files);
     die "error in $services_files: $@" if $@;
 } else {
-    $running_under_satan = -1;
+    $running_under_santa = -1;
     $debug = 1;
 
     require 'perl/misc.pl';
@@ -140,10 +140,10 @@ if ($running_under_satan) {
     #
     # Apply rules.
     #
-    print "\nApplying rules to all SATAN records...\n";
+    print "\nApplying rules to all SANTA records...\n";
     while (<>) {
 	chop;
-	if (&satan_split($_) == 0) {
+	if (&santa_split($_) == 0) {
 	    &infer_services(_);
 	}
     }

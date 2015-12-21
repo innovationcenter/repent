@@ -8,7 +8,7 @@
 # version 1, Tue Mar 21 19:31:03 1995, last mod by wietse
 #
 require 'config/paths.pl';
-require 'config/satan.cf';
+require 'config/santa.cf';
 
 sub getfqdn {
 	local($host) = @_;
@@ -41,8 +41,8 @@ sub getfqdn {
 #
 # Some scaffolding code for stand-alone testing.
 #
-if ($running_under_satan == 0) {
-	$running_under_satan = 1;
+if ($running_under_santa == 0) {
+	$running_under_santa = 1;
 	require 'perl/get_host.pl';
 	$host = &getfqdn($ARGV[0]);
 	print "$host\n";

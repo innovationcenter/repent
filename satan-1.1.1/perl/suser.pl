@@ -20,7 +20,7 @@ sub suser {
 #
 # Stand-alone mode
 #
-if ($running_under_satan == 0) {
+if ($running_under_santa == 0) {
 
 	warn 'suser.pl running in stand-alone mode';
 

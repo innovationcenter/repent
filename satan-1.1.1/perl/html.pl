@@ -35,9 +35,9 @@ sub html {
 	$wd = `pwd`;
 	chop $wd;
 	$html_root = "$wd/html";
-	$start_page = "satan.html";
+	$start_page = "santa.html";
 	$THIS_HOST = &getfqdn(&hostname());
-	die "Can't find my own hostname: set \$dont_use_nslookup in $SATAN_CF\n"
+	die "Can't find my own hostname: set \$dont_use_nslookup in $SANTA_CF\n"
 	    unless $THIS_HOST;
 	$HTML_ROOT = "file://localhost$html_root";
 	$HTML_SERVER = "http://$THIS_HOST:$html_port/$html_password/$html_root";
@@ -80,8 +80,8 @@ sub html {
 			alarm 3600;
 			&patience();
 		}
-		&init_satan_data();
-		&read_satan_data() unless defined($opt_i);
+		&init_santa_data();
+		&read_santa_data() unless defined($opt_i);
 		kill 'TERM',$helper;
 		$SIG{'PIPE'} = 'IGNORE';
 		for (;;) {
@@ -175,7 +175,7 @@ sub process_html_request {
 	# Assume the password has leaked out when the following happens.
 	#
 	$peer = &get_peer_addr(CLIENT);
-	die "SATAN password from unauthorized client: $peer\n"
+	die "SANTA password from unauthorized client: $peer\n"
 		unless is_member_of($peer, $html_client_addresses);
 	die "Illegal URL: $url received from: $peer\n" 
 		if index($script, "..") >= $[
@@ -262,7 +262,7 @@ sub bad_html_magic {
 <HTML>
 <HEAD>
 <TITLE>Bad client authentication code</TITLE>
-<LINK REV="made" HREF="mailto:satan\@fish.com">
+<LINK REV="made" HREF="mailto:santa\@fish.com">
 </HEAD>
 <BODY>
 <H1>Bad client authentication code</H1>
@@ -282,7 +282,7 @@ sub bad_html_command {
 <HTML>
 <HEAD>
 <TITLE>Unknown command</TITLE>
-<LINK REV="made" HREF="mailto:satan\@fish.com">
+<LINK REV="made" HREF="mailto:santa\@fish.com">
 </HEAD>
 <BODY>
 <H1>Unknown command</H1>
@@ -303,7 +303,7 @@ sub perl_html_script {
 <HTML>
 <HEAD>
 <TITLE>File not found</TITLE>
-<LINK REV="made" HREF="mailto:satan\@fish.com">
+<LINK REV="made" HREF="mailto:santa\@fish.com">
 </HEAD>
 <BODY>
 <H1>File not found</H1>
@@ -319,7 +319,7 @@ EOF
 <HTML>
 <HEAD>
 <TITLE>Command failed</TITLE>
-<LINK REV="made" HREF="mailto:satan\@fish.com">
+<LINK REV="made" HREF="mailto:santa\@fish.com">
 </HEAD>
 <BODY>
 <H1>Command failed</H1>
@@ -340,7 +340,7 @@ sub bad_html_form {
 <HTML>
 <HEAD>
 <TITLE>No attribute list</TITLE>
-<LINK REV="made" HREF="mailto:satan\@fish.com">
+<LINK REV="made" HREF="mailto:santa\@fish.com">
 </HEAD>
 <BODY>
 <H1>No attribute list</H1>
@@ -354,22 +354,22 @@ EOF
 #
 # Scaffolding for stand-alone testing.
 #
-if ($running_under_satan == 1) {
+if ($running_under_santa == 1) {
 
 	require 'perl/socket.pl';
 	require 'config/paths.pl';
 	require 'perl/hostname.pl';
 	require 'perl/getfqdn.pl';
-	require 'config/satan.cf';
+	require 'config/santa.cf';
 
 } else {
-	$running_under_satan = 1;
+	$running_under_santa = 1;
 
 	require 'perl/socket.pl';
 	require 'config/paths.pl';
 	require 'perl/hostname.pl';
 	require 'perl/getfqdn.pl';
-	require 'config/satan.cf';
+	require 'config/santa.cf';
 
 	&html();
 }
@@ -385,11 +385,11 @@ sub patience {
 <HTML>
 <HEAD>
 <TITLE>Initialization in progress</TITLE>
-<LINK REV="made" HREF="mailto:satan\@fish.com">
+<LINK REV="made" HREF="mailto:santa\@fish.com">
 </HEAD>
 <BODY>
 <H1>Initialization in progress</H1>
-SATAN is initializing, please try again later.
+SANTA is initializing, please try again later.
 </BODY>
 </HTML>
 EOF
@@ -426,34 +426,34 @@ sub cookie_leak_warning {
 	print CLIENT <<EOF;
 <HTML>
 <HEAD>
-<TITLE>Warning - SATAN Password Disclosure</TITLE>
-<LINK REV="made" HREF="mailto:satan\@fish.com">
+<TITLE>Warning - SANTA Password Disclosure</TITLE>
+<LINK REV="made" HREF="mailto:santa\@fish.com">
 </HEAD>
 <BODY>
-<H1><IMG SRC="$HTML_ROOT/images/satan.gif" ALT="[SATAN Image]">
-Warning - SATAN Password Disclosure</H1>
+<H1><IMG SRC="$HTML_ROOT/images/santa.gif" ALT="[SANTA Image]">
+Warning - SANTA Password Disclosure</H1>
 
 <HR>
 
 <H3> 
 
 Your Hypertext viewer may reveal confidential information when you
-contact remote WWW servers from within SATAN.
+contact remote WWW servers from within SANTA.
 
 <p>
 
-For this reason, SATAN advises you to not contact other WWW servers
-from within SATAN.
+For this reason, SANTA advises you to not contact other WWW servers
+from within SANTA.
 
 <p>
 
 For more information, see <a
-href="$HTML_ROOT/tutorials/vulnerability/SATAN_password_disclosure.html">the
-SATAN vulnerability tutorial</a>.
+href="$HTML_ROOT/tutorials/vulnerability/SANTA_password_disclosure.html">the
+SANTA vulnerability tutorial</a>.
 
 <p>
 
-This message will appear only once per SATAN session. 
+This message will appear only once per SANTA session. 
 
 <p>
 

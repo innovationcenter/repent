@@ -21,7 +21,7 @@ $BOOT="bin/boot";
 $GET_TARGETS="bin/get_targets";
 $TIMEOUT="bin/timeout";
 
-$SATAN_CF="config/satan.cf";
+$SANTA_CF="config/santa.cf";
 $SERVICES="config/services";
 
 

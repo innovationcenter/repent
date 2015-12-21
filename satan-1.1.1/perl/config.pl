@@ -1,5 +1,5 @@
 #
-# rewrite satan.cf after the user changes it.
+# rewrite santa.cf after the user changes it.
 #
 # suck in the changes, then just cycle through each line of the .cf file.
 # if there is a match, put the new value in there.
@@ -26,8 +26,8 @@ for ( split(/\n/, $new_values) ) {
 #
 # open the config and the scratch file
 #
-die "Can't read $SATAN_CF file!\n" unless open(CF, "$SATAN_CF");
-die "Can't write $SATAN_CF.new file!\n" unless open(CFN, ">$SATAN_CF.new");
+die "Can't read $SANTA_CF file!\n" unless open(CF, "$SANTA_CF");
+die "Can't write $SANTA_CF.new file!\n" unless open(CFN, ">$SANTA_CF.new");
 
 while (<CF>) {
 	# punt if the going gets too tough...
@@ -58,8 +58,8 @@ close(CF);
 close(CFN);
 
 # move the evidence to where it belongs... old to .old, new to .cf:
-system("mv $SATAN_CF $SATAN_CF.old");
-system("mv $SATAN_CF.new $SATAN_CF");
+system("mv $SANTA_CF $SANTA_CF.old");
+system("mv $SANTA_CF.new $SANTA_CF");
 
 }
 

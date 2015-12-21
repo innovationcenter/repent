@@ -70,10 +70,10 @@ clean:
 	cd src/yp-chk; $(MAKE) clean
 	cd src/fping; $(MAKE) clean
 	cd src/rpcgen; $(MAKE) clean
-	rm -f html/satan.html html/satan_documentation.html status_file \
+	rm -f html/santa.html html/santa_documentation.html status_file \
 	bit_bucket
 
 tidy:	clean
 	rm -f *.old *.bak *.orig */*.old */*.bak */*.orig tmp_file*
 	rm -rf results
-	chmod -x satan
+	chmod -x santa

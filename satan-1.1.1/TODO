@@ -1,7 +1,7 @@
-TODO list for future (SATAN version 1.1, 2.0, whatever)
+TODO list for future (SANTA version 1.1, 2.0, whatever)
 ----------------------------------------------------------
 
-o	Enable SATAN to fork and run several scans in parallel
+o	Enable SANTA to fork and run several scans in parallel
 o       Talk about sending mail/syslog to each host scanned
 o       Look at and deal with subnet masks properly...
 o       Put in a DNS walker

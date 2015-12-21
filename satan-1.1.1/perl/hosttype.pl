@@ -15,7 +15,7 @@
 # (*) Is reset whenever the $hosttype etc. tables are updated. To recalculate,
 # invoke make_hosttype_info_flag().
 #
-# Standalone usage: perl hosttype.pl [satan_record_files...]
+# Standalone usage: perl hosttype.pl [santa_record_files...]
 # 
 
 $hosttype_files = "rules/hosttype";
@@ -147,11 +147,11 @@ sub clear_hosttype_info {
 #
 # Some scaffolding for stand-alone operation
 #
-if ($running_under_satan) {
+if ($running_under_santa) {
     eval &build_infer_hosttype($hosttype_files);
     die "error in $hosttype_files: $@" if $@;
 } else {
-    $running_under_satan = -1;
+    $running_under_santa = -1;
     $debug = 1;
 
     require 'perl/misc.pl';
@@ -168,10 +168,10 @@ if ($running_under_satan) {
     #
     # Apply rules.
     #
-    print "\nApplying rules to all SATAN records...\n";
+    print "\nApplying rules to all SANTA records...\n";
     while (<>) {
 	chop;
-	if (&satan_split($_) == 0) {
+	if (&santa_split($_) == 0) {
 	    &infer_hosttype();
 	}
     }

@@ -3,7 +3,7 @@
 #
 
 #
-# Symbolic offsets for SATAN record fields.
+# Symbolic offsets for SANTA record fields.
 #
 
 $TARGET_FIELD = 0;
@@ -14,7 +14,7 @@ $TRUSTEE_FIELD = 4;
 $TRUSTED_FIELD = 5;
 $SERVICE_OUTPUT_FIELD = 6;
 $TEXT_FIELD = 7;
-$SATAN_FIELDS = 8;
+$SANTA_FIELDS = 8;
 
 # strip leading directory and optional suffix information.
 sub basename {
@@ -29,30 +29,30 @@ sub basename {
 
 # print to string 
 
-sub satan_string{
+sub santa_string{
 
     return "$target|$service|$status|$severity|$trustee|$trusted|$service_output|$text";
 }
 
 # print the output for the brain/optimizer
-sub satan_print {
+sub santa_print {
 
     print "$target|$service|$status|$severity|$trustee|$trusted|$service_output|$text\n";
 
 }
 
 # format the output for the brain/optimizer
-sub satan_text {
+sub santa_text {
 
     return "$target|$service|$status|$severity|$trustee|$trusted|$service_output|$text";
 
 }
 
 # breakup record into its constituent fields
-sub satan_split {
+sub santa_split {
     local ($line) = @_;
 
-    return ((($target,$service,$status,$severity,$trustee,$trusted,$service_output,$text) = split(/\|/, $line)) != $SATAN_FIELDS);
+    return ((($target,$service,$status,$severity,$trustee,$trusted,$service_output,$text) = split(/\|/, $line)) != $SANTA_FIELDS);
 }
 
 # count the number of elements in an associative array.
@@ -74,7 +74,7 @@ die "Can't open paths.pl\n" unless open(PATHS, "paths.pl");
 while (<PATHS>) {
 	($caps, $command) = split(/=/, $_);
 	($null, $path, $null) = split(/\"/, $command);
-	die "$path is *not* executable - necessary for SATAN to run\n"
+	die "$path is *not* executable - necessary for SANTA to run\n"
 		unless -x $path;
 	}
 

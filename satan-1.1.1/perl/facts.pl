@@ -43,7 +43,7 @@ sub process_facts {
 		%temp_facts = %new_facts;
 		%new_facts = ();
 		for (keys %temp_facts) {
-			if (&satan_split($_)) {
+			if (&santa_split($_)) {
 				warn "Ill-formatted fact: $_\n";
 				next;
 			}
@@ -122,7 +122,7 @@ sub merge_facts {
 	while (<FACTS>) {
 		chop;
 		if (!exists($old_facts{$_})) {
-			if (&satan_split($_)) {
+			if (&santa_split($_)) {
 				warn "Warning - corrupted $path record: $_\n";
 				next;
 			}
@@ -162,7 +162,7 @@ sub drop_old_facts {
 sub redo_old_facts {
 
 	for (keys %old_facts) {
-		&satan_split($_);
+		&santa_split($_);
 		&infer_todo($_);
 		&infer_facts($_);
 	}
@@ -172,7 +172,7 @@ sub redo_old_facts {
 #
 # Some scaffolding code for stand-alone testing.
 #
-if ($running_under_satan) {
+if ($running_under_santa) {
 	require 'perl/misc.pl';
 	require 'perl/fix_hostname.pl';
 	require 'perl/infer_todo.pl';
@@ -183,7 +183,7 @@ if ($running_under_satan) {
 	require 'perl/severities.pl';
 	require 'perl/trust.pl';
 } else {
-	$running_under_satan = -1;
+	$running_under_santa = -1;
 	$debug = 1;
 
 	require 'perl/misc.pl';

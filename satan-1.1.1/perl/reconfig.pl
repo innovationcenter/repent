@@ -2,7 +2,7 @@
 
 #  Usage: reconfig [file]
 #
-#   This replaces the program paths (e.g. /bin/awk) in SATAN with an
+#   This replaces the program paths (e.g. /bin/awk) in SANTA with an
 # alternate path that is found in the file "file.paths".  It also finds
 # perl5 (or at least tries!) and changes the path in all the stand-alone
 # perl programs.
@@ -24,8 +24,8 @@ $other_dirs="/usr/ccs/bin:/bin:/usr/bin:/usr/ucb:/usr/bsd:/usr/ucb/bin:/usr/sbin
 
 #
 #  Target shell scripts in question:
-@shell_scripts=("paths.pl", "rex.satan", "rsh.satan", "tftp.satan");
-@perl5_src = <get_targets faux_fping *satan* html.pl>;
+@shell_scripts=("paths.pl", "rex.santa", "rsh.santa", "tftp.santa");
+@perl5_src = <get_targets faux_fping *santa* html.pl>;
 
 #
 #  Target shell commands in question
@@ -86,7 +86,7 @@ if ($MOSAIC) {
 	print "\nHTML/WWW Browser is $MOSAIC\n";
 	$upper{"MOSAIC"} = $MOSAIC;
 	}
-else { print "Cannot find a web browser!  SATAN cannot be run except in CLI"; }
+else { print "Cannot find a web browser!  SANTA cannot be run except in CLI"; }
 
 print "\nSo far so good...\nLooking for all the commands now...\n";
 

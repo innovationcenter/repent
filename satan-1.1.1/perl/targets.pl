@@ -64,8 +64,8 @@ sub fix_primary_targets {
 	if ($primaries_deleted) {
 		print "Primaries being rescanned, rebuilding tables.\n" if $debug;
 		%temp_targets = %new_targets;
-		&save_satan_data();
-		&read_satan_data();
+		&save_santa_data();
+		&read_santa_data();
 		%new_targets = %temp_targets;
 		$primaries_deleted = 0;
 	}
