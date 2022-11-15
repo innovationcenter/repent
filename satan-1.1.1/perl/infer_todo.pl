@@ -5,7 +5,7 @@
 # variables (and to all other globals that are available) and
 # generates new probes for the data collection engine.
 # 
-# Standalone usage: perl infer_todo.pl [satan_record_files...]
+# Standalone usage: perl infer_todo.pl [santa_record_files...]
 #
 # version 1, Tue Mar 21 20:25:31 1995, last mod by wietse
 #
@@ -54,11 +54,11 @@ sub build_infer_todo{
 #
 # Some scaffolding for stand-alone operation
 #
-if ($running_under_satan) {
+if ($running_under_santa) {
     eval &build_infer_todo($infer_todo_files);
     die "error in $infer_todo_files: $@" if $@;
 } else {
-    $running_under_satan = -1;
+    $running_under_santa = -1;
 
     require 'perl/misc.pl';
     require 'perl/fix_hostname.pl';
@@ -72,7 +72,7 @@ if ($running_under_satan) {
 	print \"add_todo_ignore_args: \$target \$tool \$args\\n\"; }\n";
 
     #
-    # Build satan rules and include them into the running code.
+    # Build santa rules and include them into the running code.
     #
     $code = &build_infer_todo($infer_todo_files);
     print "Code generated from $infer_todo_files:\n\n";
@@ -83,10 +83,10 @@ if ($running_under_satan) {
     #
     # Apply rules.
     #
-    print "\nApplying rules to all SATAN records...\n";
+    print "\nApplying rules to all SANTA records...\n";
     while (<>) {
 	chop;
-	if (&satan_split($_)) {
+	if (&santa_split($_)) {
 	    warn "Ill-formed record: $_\n";
 	} else {
 	    &infer_todo();

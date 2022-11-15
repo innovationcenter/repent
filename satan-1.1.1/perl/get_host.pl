@@ -68,8 +68,8 @@ sub get_host_addr {
 #
 # Some scaffolding code for stand-alone testing.
 #
-if ($running_under_satan == 0) {
-	$running_under_satan = -1;
+if ($running_under_santa == 0) {
+	$running_under_santa = -1;
 
 	warn "get_host.pl running in test mode";
 

@@ -10,7 +10,7 @@ eval '(exit $?0)' && eval 'exec perl -S $0 ${1+"$@"}'
 
 #  Usage: [perl] reconfig [file]
 #
-#   This replaces the program paths (e.g. /bin/awk) in SATAN with an
+#   This replaces the program paths (e.g. /bin/awk) in SANTA with an
 # alternate path that is found in the file "file.paths".  It also finds
 # perl5 (or at least tries!) and changes the path in all the stand-alone
 # perl programs.
@@ -33,7 +33,7 @@ $other_dirs="/usr/ccs/bin:/bin:/usr/bin:/usr/ucb:/usr/bsd:/usr/ucb/bin:/usr/sbin
 #
 #  Target shell scripts in question:
 @shell_scripts=("config/paths.pl", "config/paths.sh");
-@perl5_src = <bin/get_targets bin/faux_fping satan bin/*.satan perl/html.pl>;
+@perl5_src = <bin/get_targets bin/faux_fping santa bin/*.santa perl/html.pl>;
 
 #
 #  Target shell commands in question
@@ -96,7 +96,7 @@ if ($MOSAIC) {
 	print "\nHTML/WWW Browser is $MOSAIC\n";
 	$upper{"MOSAIC"} = $MOSAIC;
 	}
-else { print "Cannot find a web browser!  SATAN cannot be run except in CLI"; }
+else { print "Cannot find a web browser!  SANTA cannot be run except in CLI"; }
 
 print "\nSo far so good...\nLooking for all the commands now...\n";
 

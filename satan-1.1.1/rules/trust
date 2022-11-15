@@ -1,6 +1,6 @@
 #
 # Rules that classify hosts by trust relationship. These are applied to
-# every 'a' SATAN record. Basically, they translate the cryptic SATAN
+# every 'a' SANTA record. Basically, they translate the cryptic SANTA
 # record data to something that is more suitable for reports.
 #
 # Format of this file is:

@@ -85,11 +85,11 @@ sub clear_trust_info {
 #
 # Some scaffolding for stand-alone operation
 #
-if ($running_under_satan) {
+if ($running_under_santa) {
     eval &build_update_trust($trust_files);
     die "error in $trust_files: $@" if $@;
 } else {
-    $running_under_satan = -1;
+    $running_under_santa = -1;
     $debug = 1;
 
     require 'perl/misc.pl';
@@ -106,10 +106,10 @@ if ($running_under_satan) {
     #
     # Apply rules.
     #
-    print "\nApplying rules to all SATAN records...\n";
+    print "\nApplying rules to all SANTA records...\n";
     while (<>) {
         chop;
-        if (&satan_split($_) == 0) {
+        if (&santa_split($_) == 0) {
             &update_trust($_);
         }
     }

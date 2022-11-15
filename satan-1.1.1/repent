@@ -1,6 +1,6 @@
 :
 #
-# Change SATAN to SANTA.  Do this *before* you type make...
+# Change SANTA to SANTA.  Do this *before* you type make...
 #
 # version 1, Fri Mar 24  2:25:29 1995, last mod by zen
 #
@@ -12,11 +12,11 @@ if test -f bin/md5 ; then
 	fi
 
 #
-# Change the file names from "*satan*" ==> "*santa*"
+# Change the file names from "*santa*" ==> "*santa*"
 echo Finding all the file names
-find . \! -name "satan*.gif" -print | while read old_name
+find . \! -name "santa*.gif" -print | while read old_name
 	do
-	new_name=`echo $old_name | sed 's/satan/santa/'`
+	new_name=`echo $old_name | sed 's/santa/santa/'`
 	if test $new_name != $old_name ; then
 		mv $old_name $new_name
 		fi
@@ -24,10 +24,10 @@ find . \! -name "satan*.gif" -print | while read old_name
 
 #
 # Nuke the inline and acronym stuff in everything but the binaries...
-echo Now changing all "SATAN" occurances to "SANTA"... please wait...
+echo Now changing all "SANTA" occurances to "SANTA"... please wait...
 find . -type f \! -name "*.gif" -print |
 	grep -v see_the_light.pl | xargs \
-	perl -pi -e 's/SATAN/SANTA/g; s/satan/santa/g; s/Security Administrator Tool for Analyzing Networks/Security Analysis Network Tool for Administrators/'
+	perl -pi -e 's/SANTA/SANTA/g; s/santa/santa/g; s/Security Analysis Network Tool for Administrators/Security Analysis Network Tool for Administrators/'
 
 echo linking santa...
 ln html/images/santa.gif html/images/santa-almost-full.gif
@@ -35,6 +35,6 @@ ln html/images/santa.gif html/images/santa-full.gif
 
 #
 # one last switch...
-perl -pi -e 's/"SANTA"/"SATAN"/; s/you can run the/but you shouldnt have run the/' html/name.html
+perl -pi -e 's/"SANTA"/"SANTA"/; s/you can run the/but you shouldnt have run the/' html/name.html
 
 echo Done!

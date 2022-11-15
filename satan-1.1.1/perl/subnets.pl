@@ -82,9 +82,9 @@ sub clear_subnet_info {
 #
 # Stand-alone mode
 #
-if ($running_under_satan == 0) {
+if ($running_under_santa == 0) {
 warn "subnets.p in stand-alone mode...";
-$running_under_satan = 1;
+$running_under_santa = 1;
 $debug = 1;
 require 'perl/targets.pl';
 require 'perl/severities.pl';

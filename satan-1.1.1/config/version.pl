@@ -1,6 +1,6 @@
 #
-# current version of SATAN
+# current version of SANTA
 #
-$satan_version = "Version 1.1.1";
+$santa_version = "Version 1.1.1";
 
 1;

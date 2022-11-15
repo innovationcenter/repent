@@ -41,22 +41,22 @@ if ($_sort_order eq "" || $_sort_order eq "name") {
 } elsif ($_sort_order eq "subnet") {
 	&make_subnet_info();
 	$_sort_title = "Subnet";
-	$_sort_link = "satan_results_subnet.pl";
+	$_sort_link = "santa_results_subnet.pl";
 	for (@_hosts) { $_sort_group{$host_subnet{$_}} .= "$_ "; }
 	$_sort_toc = "sort_ip";
 } elsif ($_sort_order eq "type") {
 	&make_hosttype_info();
 	$_sort_title = "System type";
-	$_sort_link = "satan_info_OStype.pl";
+	$_sort_link = "santa_info_OStype.pl";
 	for (@_hosts) { $_sort_group{$hosttype{$_}} .= "$_ "; }
 } elsif ($_sort_order eq "domain") {
 	&make_domain_info();
 	$_sort_title = "Internet domain";
-	$_sort_link = "satan_results_domain.pl";
+	$_sort_link = "santa_results_domain.pl";
 	for (@_hosts) { $_sort_group{$host_domain{$_}} .= "$_ "; }
 } elsif ($_sort_order eq "severity_type") {
 	$_sort_title = "Problem type";
-	$_sort_link = "satan_severity_hosts.pl";
+	$_sort_link = "santa_severity_hosts.pl";
 	for $_host (@_hosts) {
 		if (exists($severity_host_type_info{$_host})) {
 			for $_type (keys %{$severity_host_type_info{$_host}}) {
@@ -162,7 +162,7 @@ EOF
 		}
 		print CLIENT <<EOF;
 		<dt><IMG SRC=$HTML_ROOT/dots/$_dot.gif ALT="$_alt"> 
-		<a href="satan_info_host.pl,$_,"> $_</a> $_bad
+		<a href="santa_info_host.pl,$_,"> $_</a> $_bad
 EOF
 	}
 	print CLIENT <<EOF;

@@ -6,11 +6,11 @@
 #
 # Output to: 
 #
-# $severity_type_host_info{type}{host}: all SATAN records on that topic.
+# $severity_type_host_info{type}{host}: all SANTA records on that topic.
 #
 # $severity_type_count{type}: number of hosts with this severity.
 #
-# $severity_host_type_info{host}{type}: all SATAN records on that topic.
+# $severity_host_type_info{host}{type}: all SANTA records on that topic.
 #
 # $severity_host_count{host}: number of vulnerabilities per host.
 #
@@ -19,7 +19,7 @@
 # $severity_flag: reset whenever the tables are updated. To recalculate,
 # invoke make_severity_info().
 #
-# Standalone usage: perl severities.pl [satan_record_files...]
+# Standalone usage: perl severities.pl [santa_record_files...]
 # 
 
 sub update_severities {
@@ -69,8 +69,8 @@ sub clear_severity_info {
 #
 # Some scaffolding for stand-alone operation
 #
-if ($running_under_satan == 0) {
-    $running_under_satan = -1;
+if ($running_under_santa == 0) {
+    $running_under_santa = -1;
     $debug = 1;
     require 'perl/misc.pl';
     warn "severities.pl running in stand-alone mode";
@@ -80,7 +80,7 @@ if ($running_under_satan == 0) {
     #
     while (<>) {
 	chop;
-	if (&satan_split($_) == 0) {
+	if (&santa_split($_) == 0) {
 	    &update_severities($_);
 	}
     }

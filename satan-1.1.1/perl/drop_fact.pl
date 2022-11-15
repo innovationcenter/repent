@@ -4,7 +4,7 @@
 # Applies the rules in $drop_fact_files to the global $target..$text 
 # variables. The result value is nonzero if the record should be ignored.
 # 
-# Standalone usage: perl drop_fact.pl [satan_record_files...]
+# Standalone usage: perl drop_fact.pl [santa_record_files...]
 # 
 
 $drop_fact_files = "rules/drop";
@@ -38,16 +38,16 @@ sub build_drop_fact{
 #
 # Some scaffolding for stand-alone operation
 #
-if ($running_under_satan) {
+if ($running_under_santa) {
     eval &build_drop_fact($drop_fact_files);
     die "error in $drop_fact_files: $@" if $@;
 } else {
-    $running_under_satan = -1;
+    $running_under_santa = -1;
 
     require 'perl/misc.pl';
 
     #
-    # Build satan rules and include them into the running code.
+    # Build santa rules and include them into the running code.
     #
     $code = &build_drop_fact($drop_fact_files);
     print "Code generated from $drop_fact_files file:\n\n";
@@ -58,10 +58,10 @@ if ($running_under_satan) {
     #
     # Apply rules.
     #
-    print "\nApplying rules to all SATAN records...\n";
+    print "\nApplying rules to all SANTA records...\n";
     while (<>) {
 	chop;
-	if (&satan_split($_)) {
+	if (&santa_split($_)) {
 	    warn "Ill-formed fact: $_\n";
 	} elsif (&drop_fact()) {
 	    print "Dropped: $_\n";

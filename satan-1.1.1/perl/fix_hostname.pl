@@ -50,10 +50,10 @@ sub fix_hostname {
 #
 # Some scaffolding for stand-alone testing.
 #
-if ($running_under_satan) {
+if ($running_under_santa) {
     require 'perl/get_host.pl';
 } else {
-    $running_under_satan = -1;
+    $running_under_santa = -1;
 
     require 'perllib/getopts.pl';
     require 'perl/get_host.pl';

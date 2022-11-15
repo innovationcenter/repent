@@ -1,6 +1,6 @@
 #
 # Rules that specify what probes to try next. Each rule is applied once
-# to every 'a' SATAN record. Format of this file is:
+# to every 'a' SANTA record. Format of this file is:
 #
 #	condition TABs target tool tool-arguments
 #
@@ -28,26 +28,26 @@
 # Output from the rpcinfo probe. Tools will be executed only when
 # permitted by attack level constraints.
 #
-$service eq "mountd"			$target "showmount.satan"
-$service eq "mountd"			$target "nfs-chk.satan" "-t $short_timeout"
-$service eq "ypserv"			$target "ypbind.satan"
-$service eq "rexd"			$target "rex.satan"
-$service eq "rusersd"			$target "rusers.satan"
+$service eq "mountd"			$target "showmount.santa"
+$service eq "mountd"			$target "nfs-chk.santa" "-t $short_timeout"
+$service eq "ypserv"			$target "ypbind.santa"
+$service eq "rexd"			$target "rex.santa"
+$service eq "rusersd"			$target "rusers.santa"
 
 #
 # Output from the finger or rusers probe: finger the origin of the login.
 #
 $severity eq "l" && "$trustee|$trusted" =~ /(.*)@.*@(.*)/ \
-					$2 "finger.satan" "-u $1"
+					$2 "finger.santa" "-u $1"
 #
 # Output from the port scanners. Tools will be executed only when
 # permitted by the attack level constraints.
 #
-$service eq "ftp"			$target "ftp.satan"
-$untrusted_host && $service eq "shell"	$target "rsh.satan"
-$untrusted_host && $service eq "shell"	$target "rsh.satan" "-u root"
-$service eq "tftp"			$target "tftp.satan"
-$service =~ /X-([0-9]+)/		$target "xhost.satan" "-d $target:$1"
+$service eq "ftp"			$target "ftp.santa"
+$untrusted_host && $service eq "shell"	$target "rsh.santa"
+$untrusted_host && $service eq "shell"	$target "rsh.santa" "-u root"
+$service eq "tftp"			$target "tftp.santa"
+$service =~ /X-([0-9]+)/		$target "xhost.santa" "-d $target:$1"
 
 #
 # Output from showmount. The "*" at the beginning of the tool argument
@@ -55,18 +55,18 @@ $service =~ /X-([0-9]+)/		$target "xhost.satan" "-d $target:$1"
 # when looking for duplicate tool invocations.
 #
 $trustee =~ /\/export\/root\/(.*)@(.*)/ && ($junk = &fix_hostname($1,$2)) ne ""\
-					$target "boot.satan" $junk
+					$target "boot.santa" $junk
 
 #
 # Output from the bootparam probe gives us the NIS domain name. With
 # ypwhich we can ask the host who its NIS server is.
 #
 $service eq "boot" && $service_output =~ /domain (\S+)/ \
-					$target "ypbind.satan" "-d $1"
+					$target "ypbind.santa" "-d $1"
 $service eq "boot" && $service_output =~ /domain (\S+)/ \
-					$target "yp-chk.satan" "$1"
+					$target "yp-chk.santa" "$1"
 #
 # Example of site specific rule; SGI's, for instance, have a "guest", "lp",
 # and other account with no password when out-of-the-box from SGI.  Here's
 # how you could check for this:
-$untrusted_host && /IRIX/		$target "rsh.satan" "-u guest"
+$untrusted_host && /IRIX/		$target "rsh.santa" "-u guest"

@@ -1,9 +1,9 @@
 #
-# Maintain time, date, satan status file and GUI feedback.
+# Maintain time, date, santa status file and GUI feedback.
 #
 
 require 'perllib/ctime.pl';
-require $SATAN_CF;
+require $SANTA_CF;
 
 #
 # Convert to time of day.

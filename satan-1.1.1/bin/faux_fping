@@ -3,7 +3,7 @@
 # fping replacement that skips unresolvable hosts.
 #
 
-$running_under_satan = 1;
+$running_under_santa = 1;
 require 'perl/get_host.pl';
 require 'config/paths.pl';
 

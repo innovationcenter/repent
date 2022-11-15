@@ -1,10 +1,10 @@
 <HTML>
 <HEAD>
 <title>Improving the Security of Your Site by Breaking Into it</title>
-<LINK REV="made" HREF="mailto:satan@fish.com">
+<LINK REV="made" HREF="mailto:santa@fish.com">
 </HEAD>
 <BODY>
-<IMG SRC="../images/satan.gif" ALT="[SATAN IMAGE]">
+<IMG SRC="../images/santa.gif" ALT="[SANTA IMAGE]">
 <H2>Improving the Security of Your Site by Breaking Into it</H2>
 <HR>
 <p>
@@ -148,7 +148,7 @@ Case studies, pointers to security-related information, and software are
 described in the appendices at the end of the paper.
 
 While exploring the methods and strategies discussed in this paper we we
-wrote SATAN (Security Analysis Tool for Auditing Networks.)  Written in
+wrote SANTA (Security Analysis Tool for Auditing Networks.)  Written in
 shell, perl, expect and C, it examines a remote host or set of hosts and
 gathers as much information as possible by remotely probing NIS, finger,
 NFS, ftp and tftp, rexd, and other services.  This information includes
@@ -157,7 +157,7 @@ potential security flaws -- usually in the form of incorrectly setup or
 configured network services, well-known bugs in system or network
 utilities, or poor or ignorant policy decisions.  It then can either
 report on this data or use an expert system to further investigate any
-potential security problems.  While SATAN doesn't use all of the methods
+potential security problems.  While SANTA doesn't use all of the methods
 that we discuss in the paper, it has succeeded with ominous regularity
 in finding serious holes in the security of Internet sites.  It will be
 posted and made available via anonymous ftp when completed; Appendix A
@@ -237,7 +237,7 @@ presented in a compressed tabular form to save space:
  guest   /export/foo /bin/sh    Never logged in
  ftp     /home/ftp              Never logged in
 
-Both our experiments with SATAN and watching system crackers at work
+Both our experiments with SANTA and watching system crackers at work
 have proved to us that finger is one of the most dangerous services,
 because it is so useful for investigating a potential target.  However,
 much of this information is useful only when used in conjunction with
@@ -537,7 +537,7 @@ BOOTPARAMPROC_WHOAMI and provide the address of a client, you can get
 its NIS domainname.  This can be very useful when combined with the fact
 that you can get arbitrary NIS maps (such as the password file) when you
 know the NIS domainname.  Here is a sample code snippet to do just that
-(bootparam is part of SATAN.)
+(bootparam is part of SANTA.)
 
     char   *server;
     struct bp_whoami_arg arg;           /* query */
@@ -612,7 +612,7 @@ The portmapper only knows about RPC services.  Other network services
 can be located with a brute-force method that connects to all network
 ports.  Many network utilities and windowing systems listen to specific
 ports (e.g. sendmail is on port 25, telnet is on port 23, X windows is
-usually on port 6000, etc.)  SATAN includes a program that scans the
+usually on port 6000, etc.)  SANTA includes a program that scans the
 ports of a remote hosts and reports on its findings; if you run it
 against our target, you see:
 
@@ -638,7 +638,7 @@ target's windowing system will often "freeze up" for a short period of
 time.  One method to determine the vulnerability of an X server is to
 connect to it via the XOpenDisplay() function; if the function returns
 NULL then you cannot access the victim's display (opendisplay is part of
-SATAN):
+SANTA):
 
     char   *hostname;
 
@@ -939,7 +939,7 @@ we _did_ learn was, while testing these methods out on our own systems
 and that of friendly sites, just how effective this set of methods is
 for gaining access to a typical (UNIX) Internet host.  Tiring of trying
 to type these in all by hand, and desiring to keep our own systems more
-secure, we decided to implement a security tool (SATAN) that attempts to
+secure, we decided to implement a security tool (SANTA) that attempts to
 check remote hosts for at least some of the problems discussed here.
 The typical response, when telling people about our paper and our tool
 was something on the order of "that sounds pretty dangerous -- I hope
@@ -976,11 +976,11 @@ choice as to what security really means for your site.
 
 Appendix A:
 
-SATAN (Security Analysis Tool for Auditing Networks)
+SANTA (Security Analysis Tool for Auditing Networks)
 
-Originally conceived some years ago, SATAN is actually the prototype of
+Originally conceived some years ago, SANTA is actually the prototype of
 a much larger and more comprehensive vision of a security tool.  In its
-current incarnation, SATAN remotely probes and reports various bugs and
+current incarnation, SANTA remotely probes and reports various bugs and
 weaknesses in network services and windowing systems, as well as
 detailing as much generally useful information as possible about the
 target(s).  It then processes the data with a crude filter and what
@@ -988,10 +988,10 @@ might be termed an expert system to generate the final security
 analysis.  While not particularly fast, it is extremely modular and easy
 to modify.
 
-SATAN consists of several sub-programs, each of which is an executable
+SANTA consists of several sub-programs, each of which is an executable
 file (perl, shell, compiled C binary, whatever) that tests a host for a
 given potential weakness.  Adding further test programs is as simple as
-putting an executable into the main directory with the extension ".satan";
+putting an executable into the main directory with the extension ".santa";
 the driver program will automatically execute it.  The driver generates
 a set of targets (using DNS and a fast version of ping together to get
 "live" targets), and then executes each of the programs over each of the

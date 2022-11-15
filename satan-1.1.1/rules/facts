@@ -1,12 +1,12 @@
 #
 # Rules that deduce new facts from existing data. Each rule is executed once
-# for each 'a' SATAN record. The rule format is:
+# for each 'a' SANTA record. The rule format is:
 #
 #	condition TABs fact
 #
 # The condition is a PERL expression that has full access to the global
 # $target..$text variables, to functions, and to everything that has been
-# found sofar. The fact is a SATAN record. 
+# found sofar. The fact is a SANTA record. 
 #
 # Empty lines and text after a "#" character are ignored. Long lines may
 # be broken with backslash-newline.
